@@ -1,0 +1,29 @@
+{
+  "name": "three-component-ts",
+  "version": "0.0.1",
+  "description": "Simplifies creating three.js typescript components",
+  "scripts": {
+    "build": "tsc src/"
+  },
+  "author": "Wayne Parrott (wayneparrott.com)",
+  "license": "MIT",
+  "keywords": [
+    "three.js",
+    "typescript"
+  ],
+ "bugs": {
+    "url": "https://github.com/wayneparrott/three-component-ts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wayneparrott/three-component-ts.git"
+  },
+  
+  "dependencies": {
+    "three": ">=0.103.0",
+    "typescript": ">=3.2.0"
+  },
+  "devDependencies": {
+    "@types/three": ">=0.93.30"
+  }
+}
