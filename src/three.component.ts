@@ -6,6 +6,11 @@ import {
   Mesh, WebGLRendererParameters, Camera
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+//import * as THREE from 'three';
+
+export {OrbitControls};
+export * from 'three';
+
 
 // override and extend populateScend(), animate()
 
@@ -35,11 +40,15 @@ export abstract class ThreeComponent {
   /** three.js Renderer */
   protected renderer: WebGLRenderer;
 
+  /** this animationFrame reference */
+  private animationFrameRef: number = 0;
+
   /** three.js camera, PerspectiveCamera is created by default */
   protected camera: Camera;
 
   /** three.js light */
   protected light: AmbientLight;
+
 
   /** three.js controls for the scene, OrbitControls is create by default */
   protected controls: any;
@@ -51,6 +60,8 @@ export abstract class ThreeComponent {
 
   public updateCanvasStyleOnResize = false;
 
+
+
   /**
    * Creates the three.js Scene, it's components (camera, light, object3d, controls...) and
    * renderer. The three.js library requires a canvas element into which it will render the scene.
@@ -60,7 +71,7 @@ export abstract class ThreeComponent {
    *
    * @param domElement  HTMLCanvasElement | HTMLElement
    */
-  protected initThree(domElement: HTMLCanvasElement | HTMLElement) {
+  public initThree(domElement: HTMLCanvasElement | HTMLElement) {
 
     // assign or create the canvas element required by three.js
     this.initCanvas(domElement);
@@ -72,10 +83,28 @@ export abstract class ThreeComponent {
     this.createRenderer();
     this.populateScene();
     this.createControls();
+  }
 
-    // start the rendering process
+  /**
+   * Initiate the rendering loop. 
+   * Successful completion of initScene() is a prerequisite.
+   */
+  public startRenderer(): void {
+    if (this.animationFrameRef) {
+      this.stopRenderer();
+    }
     this.render();
   }
+
+  /**
+   * Stop the rendering loop.
+   * this.animationFrameRef is reset to 0;
+   */
+  public stopRenderer(): void {
+    cancelAnimationFrame(this.animationFrameRef);
+    this.animationFrameRef = 0;
+  }
+  
 
   /**
    * Provide the canvas element or create a <canvas> element into which three.js 
@@ -248,7 +277,7 @@ export abstract class ThreeComponent {
   protected render() {
     this.resizeIfNeeded();
 
-    requestAnimationFrame(() => {
+    this.animationFrameRef = requestAnimationFrame(() => {
       this.render();
     });
 

@@ -1,8 +1,6 @@
 # three-component-ts
 
-Simplifies creation of a three.js scene and rendering logic using TypeScript. 
-Useful in web projects using webpack or similar browser-side packaging tool, 
-simple node projects and Angular projects.
+Simplifies creation of a three.js scene and its rendering logic when using TypeScript. 
 
 ## Install
 
@@ -32,6 +30,7 @@ export RotatingBox extends ThreeComponent {
     constructor() {
       initThree(); // when no canvas or html parent element is provided
                      // create a canvas element and append to <body> 
+      startRenderer();
     }
 
     populateScene() {
@@ -48,6 +47,13 @@ export RotatingBox extends ThreeComponent {
       this.cube.rotation.y += 0.01;
     }
 }
+```
+
+## Angular
+three-component-ts can be used as the super class of an Angular component as follows:
+
+```
+
 ```
 
 
