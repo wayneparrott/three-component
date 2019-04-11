@@ -11,6 +11,8 @@
   "license": "MIT",
   "keywords": [
     "three.js",
+    "three",
+    "webgl",
     "typescript"
   ],
   "bugs": {
@@ -20,11 +22,10 @@
     "type": "git",
     "url": "https://github.com/wayneparrott/three-component-ts.git"
   },
-  "dependencies": {
-    "three": ">=0.103.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "peerDependencies": {
+    "three": ">=0.103.0",
     "typescript": ">=3.0.0"
   },
   "files": [
