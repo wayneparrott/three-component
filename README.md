@@ -1,9 +1,11 @@
 # three-component-ts
 
 Simplifies creation of a three.js scene and its rendering logic when using TypeScript. 
-If you like developing with TypeScript and three.js this class will create and 
-configuration a scene with camera, lighting, renderer and control. Customize 
-scene component creation by overriding and extending any of the following 
+If you like developing with TypeScript and three.js, e.g., Angular, React or 
+a webapp packaged with webpack, this class will create and configure a scene with 
+a camera, light, renderer and control. 
+
+Customize scene component creation by overriding and extending any of the following 
 ThreeComponent methods:
 ```
 createScene()
@@ -13,13 +15,15 @@ createRenderer()
 createControls()
 ```
 
-**Note: you must provide a populateScene() method that customizes the scene to your purposes.**
+**Note: your subclass of ThreeComponent must provide a populateScene() method that 
+customizes the scene to your purposes.**
 
 
 ## Install
 
-Install three-component-ts and it's dependencies
+Install three-component-ts. 
 ```
+npm install three
 npm install three-component-ts
 ```
 
@@ -43,7 +47,8 @@ export class RotatingBox extends ThreeComponent {
     constructor() {
       initThree();   // when no canvas or html parent element is provided
                      // a canvas element is created and appended to <body> 
-      startRenderer();
+
+      startRenderer();  //begin display of the scene & any animation you've implemented, see animate()
     }
 
     populateScene() {
@@ -62,12 +67,7 @@ export class RotatingBox extends ThreeComponent {
 }
 ```
 
-## Angular
-three-component-ts can be used as the super class of an Angular component as follows:
 
-```
-
-```
 
 
 
