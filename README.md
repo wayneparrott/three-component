@@ -32,7 +32,7 @@ As of version 0.103.0 of three you no longer need to install @types/three.
 Creating your own ThreeComponent involves:
 1. creating a TypeScript subclass of ThreeComponent
 2. implement the abstract method populateScene()
-3. call initThree(canvasElementOrDomContainer) to create the three.js scene and renderer
+3. call initThree(canvasElementOrDomContainerOrNoParam?) to create the three.js scene and renderer
 4. call startRenderer() to start the rendering loop
 5. optionally override the animate() method with your own custom scene animation details
 
@@ -64,6 +64,7 @@ export class RotatingBox extends ThreeComponent {
     animate(): void {
       this.cube.rotation.x += 0.01;
       this.cube.rotation.y += 0.01;
+      this.controls.update();
     }
 }
 ```

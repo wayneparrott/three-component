@@ -69,9 +69,9 @@ export abstract class ThreeComponent {
    * directly or it can be a general HTMLElement into which a canvas element will be created and
    * appended as a child node.
    *
-   * @param domElement  HTMLCanvasElement | HTMLElement
+   * @param domElement?  HTMLCanvasElement | HTMLElement
    */
-  public initThree(domElement: HTMLCanvasElement | HTMLElement) {
+  public initThree(domElement?: HTMLCanvasElement | HTMLElement) {
 
     // assign or create the canvas element required by three.js
     this.initCanvas(domElement);
@@ -113,7 +113,7 @@ export abstract class ThreeComponent {
    * the domElement parameter is undefined then a canvas element is created and 
    * appended directly to the <body> element.
    *
-   * @param domElement HTMLCanvasElement | HTMLElement.
+   * @param domElement? HTMLCanvasElement | HTMLElement.
    */
   protected initCanvas(domElement?: HTMLCanvasElement | HTMLElement) {
 
