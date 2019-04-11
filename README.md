@@ -21,11 +21,12 @@ customizes the scene to your purposes.**
 
 ## Install
 
-Install three-component-ts. 
+Install three.js library and three-component-ts. 
 ```
 npm install three
 npm install three-component-ts
 ```
+As of version 0.103.0 of three you no longer need to install @types/three.
 
 ## Create Your Own Three component
 Creating your own ThreeComponent involves:
@@ -38,7 +39,7 @@ Creating your own ThreeComponent involves:
 Following is an example rotating box implementation:
 
 ```
-mport { ThreeComponent, AxesHelper, BoxGeometry, Mesh, MeshBasicMaterial } from 'three-component-ts';
+import { ThreeComponent, AxesHelper, BoxGeometry, Mesh, MeshBasicMaterial } from 'three-component-ts';
 
 export class RotatingBox extends ThreeComponent {
 
