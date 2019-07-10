@@ -6,7 +6,6 @@ import {
   Mesh, WebGLRendererParameters, Camera
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-//import * as THREE from 'three';
 
 export {OrbitControls};
 export * from 'three';
@@ -131,6 +130,8 @@ export abstract class ThreeComponent {
     // create and append <canvas> to domElement
     if (domElement instanceof HTMLElement) {
       this.canvas = document.createElement('canvas') as HTMLCanvasElement;
+      this.canvas.style.width = '100%';
+      this.canvas.style.height = '100%';
       domElement.appendChild(this.canvas);
     }
   }
@@ -299,12 +300,11 @@ export abstract class ThreeComponent {
       return;
     }
 
-    // console.log('x', width, this.canvas.width, height, this.canvas.height);
-
     if (this.camera instanceof PerspectiveCamera) {
       this.camera.aspect = width / height;
       this.camera.updateProjectionMatrix();
     }
+
     this.renderer.setSize(width, height, this.updateCanvasStyleOnResize);
   }
 
