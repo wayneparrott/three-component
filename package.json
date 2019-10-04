@@ -1,5 +1,5 @@
 {
-  "name": "three-component-ts",
+  "name": "@wayneparrott/three-component-ts",
   "version": "0.0.5",
   "description": "Simplifies using three.js with TypeScript",
   "main": "lib/three.component.js",
