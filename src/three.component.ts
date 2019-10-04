@@ -136,28 +136,6 @@ export abstract class ThreeComponent {
     }
   }
 
-
-  // /**
-  //  * Find and return the first HTMLCanvasElement child of a parent HTMLElement;
-  //  * otherwise return null;
-  //  *
-  //  * @param parentNode
-  //  */
-  // private findCanvasElement(parentNode: Node): Node {
-  //   if (parentNode && parentNode.hasChildNodes) {
-  //     const nodes = parentNode.childNodes;
-  //     // tslint:disable-next-line: prefer-for-of
-  //     for (let i = 0; i < nodes.length; i++) {
-  //       const node = nodes[i];
-  //       if (node.nodeName.toLowerCase() === 'canvas') { return node; }
-  //       if (node.hasChildNodes) {
-  //         return this.findCanvasElement(node);
-  //       }
-  //     }
-  //     return null;
-  //   }
-  // }
-
   /**
    * Create an empty three.js scene and save it internally
    */
@@ -243,14 +221,16 @@ export abstract class ThreeComponent {
   }
 
   protected createOrbitControls() {
-    this.controls = new OrbitControls(this.camera as any, this.renderer.domElement);
+    this.controls = new OrbitControls(this.camera); //, this.renderer.domElement);
 
     this.controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
     this.controls.dampingFactor = 0.25;
     this.controls.screenSpacePanning = false;
-    this.controls.minDistance = 100;
-    this.controls.maxDistance = 500;
+    // this.controls.minDistance = 100;
+    // this.controls.maxDistance = 500;
     this.controls.maxPolarAngle = Math.PI / 2;
+
+    this.controls.update();
   }
 
   /**
@@ -309,3 +289,27 @@ export abstract class ThreeComponent {
   }
 
 }
+
+
+
+  // /**
+  //  * Find and return the first HTMLCanvasElement child of a parent HTMLElement;
+  //  * otherwise return null;
+  //  *
+  //  * @param parentNode
+  //  */
+  // private findCanvasElement(parentNode: Node): Node {
+  //   if (parentNode && parentNode.hasChildNodes) {
+  //     const nodes = parentNode.childNodes;
+  //     // tslint:disable-next-line: prefer-for-of
+  //     for (let i = 0; i < nodes.length; i++) {
+  //       const node = nodes[i];
+  //       if (node.nodeName.toLowerCase() === 'canvas') { return node; }
+  //       if (node.hasChildNodes) {
+  //         return this.findCanvasElement(node);
+  //       }
+  //     }
+  //     return null;
+  //   }
+  // }
+  
